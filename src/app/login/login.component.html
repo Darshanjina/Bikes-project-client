@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 bg-img vh-100 pt-5 text-center">
+      <span class="h3 text-light my-5 px-3 py-2 bg-dark rounded-pill"
+        ><i class="fa fa-motorcycle mr-3 text-warning" aria-hidden="true"></i
+        >Superbikes</span
+      >
+    </div>
+    <div class="col-6 mt-5">
+      <p class="h3 mt-3">
+        <i class="fa fa-user-circle mr-3" aria-hidden="true"></i><b>Login</b>
+      </p>
+      <p class="text-uppercase mt-5"><b>Username</b></p>
+      <input class="form-control w-75" [(ngModel)]="form.username" /><br />
+      <p class="text-uppercase mt-4"><b>Password</b></p>
+      <input
+        class="form-control w-75"
+        type="password"
+        [(ngModel)]="form.password"
+      /><br />
+      <div
+        class="alert alert-danger text-danger w-75"
+        *ngIf="notFound === true"
+      >
+        User Login Failed
+      </div>
+      <button class="btn btn-light btn-lg rounded-pill mt-4" (click)="login()">
+        <i class="fa fa-sign-in" aria-hidden="true"></i> Login</button
+      ><br /><br />
+      <a routerLink="/signup"
+        ><i class="fa fa-user-plus mr-2" aria-hidden="true"></i>New User Click
+        Here</a
+      >
+    </div>
+  </div>
+</div>

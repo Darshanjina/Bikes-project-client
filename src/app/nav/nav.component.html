@@ -1,0 +1,29 @@
+<div class="text-center">
+
+<div class="dropdown mt-3">
+    <button class="btn btn-primary w-100 mt-4 dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Category
+    </button>
+  
+    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+        <button class="btn btn-md btn-primary mb-2" routerLink="/home/category"><i class="fa fa-list-ul pr-3" aria-hidden="true"></i>View Category</button>
+        <button class="btn btn-md btn-primary" routerLink="/home/insert"><i class="fa fa-plus-circle pr-3" aria-hidden="true"></i>Add Category</button>
+    </div>
+  </div>
+
+
+  
+<div class="dropdown">
+        <button class="btn btn-primary w-100 mt-4 dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Post
+        </button>
+      
+        <div class="dropdown-menu text-center w-100" aria-labelledby="dropdownMenuLink">
+            <button class="btn btn-md btn-primary mb-2" routerLink="/home/post"><i class="fa fa-list-ul pr-3" aria-hidden="true"></i>View Post</button>
+            <button class="btn btn-md btn-primary" routerLink="/home/insert-post"><i class="fa fa-plus-circle pr-3" aria-hidden="true"></i>Add Post</button>
+        </div>
+      </div>     
+      
+      <button class="btn btn-md btn-danger rounded-pill mt-4" (click)='logout()'><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>{{username}}</button>
+
+</div>

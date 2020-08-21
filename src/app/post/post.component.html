@@ -1,0 +1,152 @@
+ <div class="text-center mt-2" *ngIf="loading === true">
+  <span class="spinner-grow text-primary" role="status"></span>
+  <span class="spinner-grow text-secondary" role="status"></span>
+  <span class="spinner-grow text-info" role="status"></span>
+  <span class="spinner-grow text-danger" role="status"></span>
+  <span class="spinner-grow text-warning" role="status"></span>
+  </div><br>
+
+<div class="container-fluid bg-light p-2">
+    <span class="h1 text-success">Post</span>
+    <button class="btn btn-outline-danger rounded-pill float-right" routerLink="/home/insert-post">Create</button>
+</div><br>
+
+<!-- <table class="table">
+    <thead class="bg-dark text-light">
+        <td>Id</td>
+        <td>Cat_id</td>
+        <td>Cat_name</td>
+        <td>Title</td>
+        <td>Summary</td>
+        <td>Page_Url</td>
+        <td>Meta_Title</td>
+        <td>Meta_Description</td>
+        <td>Image_Name</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </thead>
+    <tr *ngFor="let x of list,let i = index" class="bg-light">
+        <td>{{i+1}}</td>
+        <td>{{x.cat_id | cut : 6}}</td>
+        <td>{{x.cat_name}}</td>
+        <td>{{x.title}}</td>
+        <td [innerHTML] = "x.summary"></td>
+        <td>{{x.page_url}}</td>
+        <td>{{x.meta_title}}</td>
+        <td>{{x.meta_desc}}</td>
+        <td>{{x.img_name}}</td> -->
+
+        <!-- <td><img src="{{imagepath}} {{x.img_name}}" class="tabimg"></td> -->
+
+        <!-- <td><button class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#exampleModal" (click)="edit(x)" ><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+        <td><button class="btn btn-danger rounded-pill" (click)="delete(x._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+    </tr>
+</table> -->
+      
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let i = index"> {{i+1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cat_id">
+      <th mat-header-cell *matHeaderCellDef> Cat Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.cat_id | cut : 6}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cat_name">
+      <th mat-header-cell *matHeaderCellDef> Cat Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.cat_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="summary">
+      <th mat-header-cell *matHeaderCellDef> Summary </th>
+      <td mat-cell *matCellDef="let element"> {{element.summary | cut:11}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="page_url">
+      <th mat-header-cell *matHeaderCellDef> Page Url </th>
+      <td mat-cell *matCellDef="let element"> {{element.page_url}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="meta_title">
+      <th mat-header-cell *matHeaderCellDef> Meta Title </th>
+      <td mat-cell *matCellDef="let element"> {{element.meta_title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="meta_desc">
+      <th mat-header-cell *matHeaderCellDef> Meta Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.meta_desc | cut:10}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="img_name">
+      <th mat-header-cell *matHeaderCellDef> Image Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.img_name | cut : 6 }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let element"><button class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#exampleModal" (click)="edit(element)" ><i class="fa fa-pencil" aria-hidden="true"></i></button> {{element.edit}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element"><button class="btn btn-danger rounded-pill" (click)="delete(element._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button> {{element.delete}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <!-- <p>Cat_Id</p>
+                    <input class="form-control" [(ngModel)]="formdata.cat_id"> -->
+
+                    <p>Cat Name</p>
+                    <!-- <select class="form-control" [(ngModel)]="formdata.cat_name"> -->
+                      <select class="form-control" [(ngModel)]="formdata.cat_id" (change)="Catname()">
+                          <option *ngFor="let x of postlist" value={{x._id}}>{{x.name}}</option>
+                      </select>
+                    <p>Title</p>
+                    <input class="form-control" [(ngModel)]="formdata.title">
+                    <p>Summary</p>
+                    <ckeditor [(ngModel)]="formdata.summary" [editor]="Editor" data=""></ckeditor>
+                    <p>Page Url</p>
+                    <input class="form-control" [(ngModel)]="formdata.page_url">
+                    <p>Meta Title</p>
+                    <input class="form-control" [(ngModel)]="formdata.meta_title">
+                    <p>Meta Description</p>
+                    <input class="form-control" [(ngModel)]="formdata.meta_desc"><br>
+                    <p>Image Name</p>
+                    <input class="form-control" disabled [(ngModel)]="formdata.img_name"><br>
+                    
+                    <input type="file" class="form-control" (change)="getImageName($event)" ng2FileSelect [uploader]="uploader"><br>
+
+                    
+                    <div class="alert alert-danger" *ngIf="invalid=== true">Please fill all the details</div>
+                    <button type="button" class="btn btn-primary" (click)="update()">Update</button>
+                    <button type="button" class="btn btn-primary ml-3 " data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>

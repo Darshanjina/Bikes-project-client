@@ -1,0 +1,43 @@
+<div class="text-center mt-2" *ngIf="loading === true">
+        <span class="spinner-grow text-primary" role="status"></span>
+        <span class="spinner-grow text-secondary" role="status"></span>
+        <span class="spinner-grow text-info" role="status"></span>
+        <span class="spinner-grow text-danger" role="status"></span>
+        <span class="spinner-grow text-warning" role="status"></span>
+</div><br>
+
+<div class="bg-dark text-light w-100 p-2">
+    <span class="h2">Post Insert</span> 
+</div>
+
+
+<div class="w-50 p-3 bg-light mt-3 mb-5">
+    <!-- <p class="text-uppercase"><b>Cat_Id</b></p>
+    <input class="form-control" [(ngModel)]="formdata.cat_id"> -->
+
+    <p class="text-uppercase pt-3"><b>Cat Name</b></p>
+    <!-- <select class="form-control" [(ngModel)]="formdata.cat_name"> -->
+        <select class="form-control border border-dark" [(ngModel)]="formdata.cat_id" (change)="Catname()">
+            <option *ngFor="let x of postlist" value={{x._id}}>{{x.name}}</option>
+        </select><br>
+    <p class="text-uppercase"><b>Title</b></p>
+    <input class="form-control border border-dark " [(ngModel)]="formdata.title"><br>
+    <p class="text-uppercase"><b>Summary</b></p>
+    <ckeditor [(ngModel)]="formdata.summary" [editor]="Editor" data="" ></ckeditor ><br>
+    <p class="text-uppercase"><b>Page Url</b></p>
+    <input class="form-control border border-dark " [(ngModel)]="formdata.page_url"><br>
+    <p class="text-uppercase"><b>Meta Title</b></p>
+    <input class="form-control border border-dark " [(ngModel)]="formdata.meta_title"><br>
+    <p class="text-uppercase"><b>Meta Description</b></p>
+    <input class="form-control border border-dark " [(ngModel)]="formdata.meta_desc"><br>
+    <p class="text-uppercase"><b>Image Name</b></p>
+    <input  class="form-control border border-dark " disabled [(ngModel)]="formdata.img_name"><br>
+
+    <input type="file" class="form-control border border-dark " (change)="getImageName($event)" ng2FileSelect [uploader]="uploader"><br>
+
+    <div class="alert alert-danger" *ngIf="invalid === true">Please Fill all the details.</div>
+    <button class="btn btn-primary rounded-pill" (click)="insert()">Save</button> 
+    <button type="button" class="btn btn-primary ml-3 rounded-pill" data-dismiss="modal" routerLink="/home/post">Close</button>
+ 
+
+</div>

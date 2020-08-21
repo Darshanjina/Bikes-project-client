@@ -1,0 +1,16 @@
+/* .tabrow:hover{
+    background-image: linear-gradient(to right,#80788F,#2E4A6F,#5D9879,#6A8C7E);
+    background-size: cover;
+    color: white;
+    transition: 1s;
+}
+
+.modbg{
+    background-image:linear-gradient(to top,#80788F,#2E4A6F,#5D9879,#6A8C7E) ;
+    background-size: cover;
+    color: white;
+} */
+
+table{
+    width: 100%;
+}

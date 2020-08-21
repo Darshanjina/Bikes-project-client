@@ -1,0 +1,16 @@
+/* 
+.bg-img{
+    background-image: url("../../assets/papers.co-ms87-car-drive-seaside-nature-beach-city-dark-flare-ipad-air.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+.img-icon{
+    margin-top: 30%;
+} */
+
+.bg-img{
+    background-image: url('../../assets/login.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}

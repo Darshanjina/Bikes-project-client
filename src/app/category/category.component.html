@@ -1,0 +1,119 @@
+<div class="text-center mt-2" *ngIf="loading === true">
+  <span class="spinner-grow text-primary" role="status"></span>
+  <span class="spinner-grow text-secondary" role="status"></span>
+  <span class="spinner-grow text-info" role="status"></span>
+  <span class="spinner-grow text-danger" role="status"></span>
+  <span class="spinner-grow text-warning" role="status"></span>
+  </div><br>
+
+<div class="container-fluid pb-2">
+    <span class="h1 text-success">Categories</span>
+    <button class="btn btn-outline-danger rounded-pill float-right" routerLink="/home/insert">Create</button>
+</div>
+
+<!-- <table class="table">
+    <thead class="bg-dark text-light">
+        <td>Id</td>
+        <td>Name</td>
+        <td>Page_Url</td>
+        <td>Meta_Title</td>
+        <td>Meta_Description</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </thead>
+    <tr *ngFor="let x of records,let i = index" class="bg-light">
+        <td>{{i+1}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.page_url}}</td>
+        <td>{{x.meta_title}}</td>
+        <td>{{x.meta_desc}}</td>
+        <td><button class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#exampleModal" (click)="edit(x)">Edit<i class="fa fa-pencil ml-2" aria-hidden="true"></i></button></td>
+        <td><button class="btn btn-danger rounded-pill" (click)="delete(x._id)">Delete<i class="fa fa-trash-o ml-2" aria-hidden="true"></i></button></td>
+    </tr>
+</table> -->
+
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let i = index"> {{i+1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="page_url">
+      <th mat-header-cell *matHeaderCellDef> Page Url </th>
+      <td mat-cell *matCellDef="let element"> {{element.page_url}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="meta_title">
+      <th mat-header-cell *matHeaderCellDef> Meta Title </th>
+      <td mat-cell *matCellDef="let element"> {{element.meta_title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="meta_desc">
+      <th mat-header-cell *matHeaderCellDef> Meta Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.meta_desc | cut : 8}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="img_name">
+      <th mat-header-cell *matHeaderCellDef> Image Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.img_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let element"><button class="btn btn-primary rounded-pill mr-3" data-toggle="modal" data-target="#exampleModal" (click)="edit(element)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element"> <button class="btn btn-danger rounded-pill" (click)="delete(element._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button> </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p>Name</p>
+                <input class="form-control" [(ngModel)]="formdata.name">
+                <p>Page Url</p>
+                <input class="form-control" [(ngModel)]="formdata.page_url">
+                <p>Meta Title</p>
+                <input class="form-control" [(ngModel)]="formdata.meta_title">
+                <p>Meta Description</p>
+                <input  class="form-control" [(ngModel)]="formdata.meta_desc">
+                <p>Image Name</p>
+                <input class="form-control" disabled [(ngModel)]="formdata.img_name"><br>
+
+                <input type="file" class="form-control" (change)="getImageName($event)" ng2FileSelect [uploader]="uploader"><br>
+
+                <div class="alert alert-danger" *ngIf="invalid=== true">Please fill all the details</div>
+                <button type="button" class="btn btn-primary" (click)="update()">Update</button>
+                <button type="button" class="btn btn-primary ml-3 " data-dismiss="modal" (click)="modalclose()">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>

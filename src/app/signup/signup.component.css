@@ -1,0 +1,16 @@
+/* 
+.bg-img{
+    background-image: url("../../assets/papers.co-mp93-one-sunny-day-beach-rock-sea-nature-dark-1280x1024.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.img-icon{
+    margin-top: 30%;
+} */
+.bg-img{
+    background-image: url('../../assets/signup.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
